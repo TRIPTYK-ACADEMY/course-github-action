@@ -1,15 +1,25 @@
-name: Tests
+name: PostgreSQL service example
 
-on: ["push"]
+on: push
 
 jobs:
-  example_matrix:
-    strategy:
-      matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
-        version: [10, 12, 14]
-    runs-on: ${{ matrix.os }}
+  container-job:
+    name: "job"
+    runs-on: ubuntu-latest
+    container: node
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.version }}
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+      - run: npm i
+      - run: node sql.js
