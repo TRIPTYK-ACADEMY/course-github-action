@@ -1,6 +1,8 @@
 name: Tests
 
-on: ["pull_request"]
+on: 
+  - "pull_request"
+  -  "push"
 
 concurrency:
   group: ci-${{ github.head_ref || github.ref }}
