@@ -2,16 +2,16 @@ name: Tests
 
 on: ["push"]
 
-env:
-  REQUIRED_NODE_VERSION: 18
-
 jobs:
   dummy-job:
-    name: "Dummy job"
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    name: "Dummy ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.REQUIRED_NODE_VERSION }}
+      - run: 'type package.json'
+        if: runner.os == 'Windows'
+      - run: 'cat package.json'
+        if: runner.os == 'Linux'
