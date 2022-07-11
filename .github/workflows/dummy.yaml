@@ -2,6 +2,8 @@ name: Tests
 
 on: ["push"]
 
+env:
+  REQUIRED_NODE_VERSION: 18
 
 jobs:
   dummy-job:
@@ -12,26 +14,4 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-      - run : npm install
-      - run : npm install -g typescript
-      - run : npx tsc
-      - name: Build and save for later
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist-artifact
-          path: dist
-  second-job: 
-    needs: 
-      - dummy-job
-    name: "Next Job"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Download previously built files
-        uses: actions/download-artifact@v3
-        with:
-          path: dist
-          name: dist-artifact
-      - run: "ls -la"
-        working-directory: dist
+          node-version: ${{ REQUIRED_NODE_VERSION }}
