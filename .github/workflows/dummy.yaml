@@ -14,4 +14,4 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ REQUIRED_NODE_VERSION }}
+          node-version: ${{ env.REQUIRED_NODE_VERSION }}
