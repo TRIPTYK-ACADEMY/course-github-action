@@ -1,0 +1,27 @@
+{
+  "name": "amaury-random-quote",
+  "version": "1.0.0",
+  "description": "Random quotes from Amaury",
+  "main": "index.js",
+  "scripts": {
+    "lint": "pnpm eslint src/**/*.ts",
+    "test": "pnpm jest tests/unit/*.test.ts"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^28.1.4",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^28.1.2",
+    "ts-jest": "^28.0.5",
+    "typescript": "^4.7.4"
+  }
+}
