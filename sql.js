@@ -2,7 +2,6 @@ import postgres from 'postgres'
 
 const sql = postgres({
     password: "postgres",
-    host: "localhost",
     database: "postgres",
     user: "postgres"
  });
