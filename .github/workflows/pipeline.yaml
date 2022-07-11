@@ -52,6 +52,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-
+      - run: pnpm tsc
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: 7.1.1
