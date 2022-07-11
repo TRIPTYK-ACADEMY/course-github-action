@@ -34,3 +34,4 @@ jobs:
           path: dist
           name: dist-artifact
       - run: "ls -la"
+        working-directory: dist
