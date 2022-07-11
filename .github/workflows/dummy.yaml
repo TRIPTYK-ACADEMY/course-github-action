@@ -3,15 +3,13 @@ name: Tests
 on: ["push"]
 
 jobs:
-  dummy-job:
+  example_matrix:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-    name: "Dummy ${{ matrix.os }}"
+        os: [ubuntu-18.04, ubuntu-20.04]
+        version: [10, 12, 14]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
-      - run: 'type package.json'
-        if: runner.os == 'Windows'
-      - run: 'cat package.json'
-        if: runner.os == 'Linux'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.version }}
